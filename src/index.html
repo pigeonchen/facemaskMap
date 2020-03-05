@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>口罩地圖</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css"></link> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css"></link> 
+  </head>
+  <body>
+    <div class="loading">
+      <div class="spinner-border text-blue" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="container-fluid px-0">
+      <div class="row no-gutters">
+        <div class="col-sm-5 col-lg-3">
+          <div class="sidebox">
+            <div class="search  text-light p-1 sticky-top">
+              <div class="search-title mx-3 d-flex flex-wrap">
+                <h1 class="w-50">口罩地圖</h1>
+                <h1 class="text-sm-left date">date</h1>
+                <p>一周限購一次</p>
+              </div>
+              <div class="search-box mx-3 " >
+                <form class="d-flex flex-wrap">
+                  <div class="form-group w-100 search-item">
+                    <label for="searchName">藥局搜尋</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="searchName"
+                      placeholder="請輸入藥局或地址"
+                    />
+                    <span class="search-button"><i class="material-icons">
+                      search
+                      </i></span>
+                  </div>
+                  <div class="form-group w-50 pr-2">
+                    <label for="selectCity">城市</label>
+                    <select id="selectCity"  class="form-control" >
+                      <option value="台北市">台北市</option>
+                    </select>
+                  </div>
+                  <div class="form-group w-50">
+                    <label for="selectTown">區域</label>
+                    <select id="selectTown"  class="form-control" >
+                      <option value="中正區">中正區</option>
+                    </option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <ul class="list-group ">
+              <li class="list-group-item">
+                    <h3 class="card-title">xxx藥局</h3>
+                    <p class=" m-0">電話 </p>
+                    <a href="https://www.google.com.tw/maps/place/" target="_blank">地址</a>
+                    <p class=" m-0 ">更新時間</p>
+                    <div class="mask d-flex justify-content-center mt-5">
+                      <a href="#" class="btn btn-blue w-50 mr-2 text-light">成人口罩:000000</a>
+                      <a href="#" class="btn btn-pink w-50 text-light">兒童口罩: 0000000</a>
+                    </div>
+              </li>
+            </ul>
+          </div>
+          </div>
+        <div class="col-sm-7 col-lg-9">
+          <div id="map">
+
+          </div>
+        </div>
+        <div class="tip">
+          <i class="material-icons">
+            info
+            </i>
+        </div>
+        <div class="cardBox">
+          <div class="cardBox-background">
+            <button href="" class="cardBox-close btn btn-blue">X</button>
+            <img class="cardBox-img"src="./img/tips.png" alt="publicity map" >
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

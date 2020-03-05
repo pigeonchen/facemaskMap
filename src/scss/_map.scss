@@ -1,0 +1,99 @@
+#map {
+  height: 100vh;
+  z-index: 0;
+}
+
+.tip {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 1000;
+  transition: all 0.3s;
+  i {
+    font-size: 5rem;
+    color: #78b7ff;
+    &:hover {
+      color: #ff8e75;
+    }
+  }
+  &:hover {
+    transform: translate(-20px, -10px);
+  }
+}
+
+.cardBox {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 901;
+  transition: display 1s;
+
+  &-background {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+  }
+  &.active {
+    display: block;
+  }
+
+  &-close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+
+  &-img {
+    max-width: 50%;
+    max-height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.marker-cluster-small {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+.marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+.marker-cluster-medium div {
+  background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-large {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+.marker-cluster-large div {
+  background-color: rgba(241, 128, 23, 0.6);
+}
+
+.marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+}
+
+.marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+
+  text-align: center;
+  border-radius: 15px;
+  font: 12px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+.marker-cluster span {
+  line-height: 30px;
+}
