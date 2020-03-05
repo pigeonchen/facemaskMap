@@ -225,6 +225,7 @@ function panToMarker(data) {
 
 selectCity.addEventListener('change', function() {
   updateTown(cityName)
+  selectPharmaciesArea(storeData)
 })
 
 selectTown.addEventListener('change', function() {
