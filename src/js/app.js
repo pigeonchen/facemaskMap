@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       )
 
       storeData = response
+
       updateMarker(storeData)
       updateSidebar(filterResponse)
 
@@ -160,11 +161,20 @@ function updateMarker(data) {
       <li class="list-group-item  border-0">
         <h5 class="card-title">${properties.name}</h5>
         <p class=" ">電話: ${properties.phone} </p>
-        <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${properties.address}" target="_blank">${properties.address}</a></p>
+        <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${
+          properties.address
+        }" target="_blank">${properties.address}</a></p>
         <p class=" ">更新時間: ${properties.updated}</p>
+        <p class=" mb-1 ">注意事項: ${
+          properties.custom_note === '' ? '無' : properties.custom_note
+        }</p>
         <div class="mask d-flex justify-content-center mt-5">
-          <a href="#" class="btn btn-blue  mr-2 d-inline-block text-light">成人口罩:${properties.mask_adult}</a>
-          <a href="#" class="btn btn-pink  d-inline-block text-light">兒童口罩: ${properties.mask_child}</a>
+          <a href="#" class="btn btn-blue  mr-2 d-inline-block text-light">成人口罩:${
+            properties.mask_adult
+          }</a>
+          <a href="#" class="btn btn-pink  d-inline-block text-light">兒童口罩: ${
+            properties.mask_child
+          }</a>
         </div>
       </li>`)
     )
@@ -181,11 +191,20 @@ function updateSidebar(data) {
     <li class="list-group-item ">
       <h5 class="card-title">${properties.name}</h5>
       <p class=" mb-1">電話: ${properties.phone} </p>
-      <p class=" mb-1">地址: <a  href="https://www.google.com.tw/maps/place/${properties.address}" target="_blank">${properties.address}</a></p>
+      <p class=" mb-1">地址: <a  href="https://www.google.com.tw/maps/place/${
+        properties.address
+      }" target="_blank">${properties.address}</a></p>
       <p class=" mb-1 ">更新時間: ${properties.updated}</p>
+      <p class=" mb-1 ">注意事項: ${
+        properties.custom_note === '' ? '無' : properties.custom_note
+      }</p>
       <div class="mask d-flex justify-content-between mt-5">
-        <a href="#" class="btn btn-blue w-50 mr-2 text-light">成人口罩:${properties.mask_adult}</a>
-        <a href="#" class="btn btn-pink w-50 text-light">兒童口罩: ${properties.mask_child}</a>
+        <a href="#" class="btn btn-blue w-50 mr-2 text-light">成人口罩:${
+          properties.mask_adult
+        }</a>
+        <a href="#" class="btn btn-pink w-50 text-light">兒童口罩: ${
+          properties.mask_child
+        }</a>
       </div>
     </li>`
   })
@@ -212,11 +231,20 @@ function panToMarker(data) {
       <li class="list-group-item  border-0">
         <h5 class="card-title">${properties.name}</h5>
         <p class=" ">電話: ${properties.phone} </p>
-        <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${properties.address}" target="_blank">${properties.address}</a></p>
+        <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${
+          properties.address
+        }" target="_blank">${properties.address}</a></p>
         <p class=" ">更新時間: ${properties.updated}</p>
+        <p class=" mb-1 ">注意事項: ${
+          properties.custom_note === '' ? '無' : properties.custom_note
+        }</p>
         <div class="mask d-flex justify-content-between mt-5">
-          <a href="#" class="btn btn-blue w-50 mr-1 d-inline-block text-light">成人口罩:${properties.mask_adult}</a>
-          <a href="#" class="btn btn-pink w-50 d-inline-block text-light">兒童口罩: ${properties.mask_child}</a>
+          <a href="#" class="btn btn-blue w-50 mr-1 d-inline-block text-light">成人口罩:${
+            properties.mask_adult
+          }</a>
+          <a href="#" class="btn btn-pink w-50 d-inline-block text-light">兒童口罩: ${
+            properties.mask_child
+          }</a>
         </div>
       </li>`
     )
