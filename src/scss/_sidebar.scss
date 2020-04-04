@@ -1,6 +1,10 @@
 .search {
   background-color: #78b7ff;
   z-index: 500;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
+  &-title h3 {
+    letter-spacing: 3px;
+  }
 }
 
 .sidebox {

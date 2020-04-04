@@ -5,7 +5,7 @@ import 'leaflet.locatecontrol'
 import 'leaflet.markercluster'
 
 //-------------------宣導圖
-document.querySelector('.tip').addEventListener('click', function() {
+document.querySelector('.tip').addEventListener('click', function () {
   let cardBox = document.querySelector('.cardBox').classList
   cardBox.add('active')
 })
@@ -21,7 +21,7 @@ let year = date.getFullYear()
 let month = date.getMonth() + 1
 let day = date.getDate()
 
-document.querySelector('.date').textContent = `${year}/${month}/${day}`
+document.querySelector('.date').textContent = `${year} / ${month} / ${day} `
 
 //--------------------option選項
 
@@ -34,35 +34,35 @@ let loading = document.querySelector('.loading')
 let storeData = []
 let osmMap = {}
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   setMapPoint()
   updateCounty(cityName)
   updateTown(cityName)
 })
-;(function ajaxData() {
-  axios
-    .get(
-      'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json'
-    )
-    .then(res => {
-      const response = res.data.features
-      const filterResponse = response.filter(
-        element =>
-          element.properties.county === selectCity.value &&
-          element.properties.town === selectTown.value
+  ; (function ajaxData () {
+    axios
+      .get(
+        'https://raw.githubusercontent.com/kiang/pharmacies/master/json/points.json'
       )
+      .then(res => {
+        const response = res.data.features
+        const filterResponse = response.filter(
+          element =>
+            element.properties.county === selectCity.value &&
+            element.properties.town === selectTown.value
+        )
 
-      storeData = response
+        storeData = response
 
-      updateMarker(storeData)
-      updateSidebar(filterResponse)
+        updateMarker(storeData)
+        updateSidebar(filterResponse)
 
-      loading.setAttribute('style', 'display: none')
-    })
-    .catch(err => console.log(err))
-})()
+        loading.setAttribute('style', 'display: none')
+      })
+      .catch(err => console.log(err))
+  })()
 
-function updateCounty(cityData) {
+function updateCounty (cityData) {
   let str = ''
   for (let i = 0; i < cityData.length; i++) {
     str += `
@@ -72,7 +72,7 @@ function updateCounty(cityData) {
   }
   selectCity.innerHTML = str
 }
-function updateTown(cityData) {
+function updateTown (cityData) {
   let str = ''
   const townData = cityData.filter(city => city.CityName === selectCity.value)
 
@@ -85,7 +85,7 @@ function updateTown(cityData) {
   selectTown.innerHTML = str
 }
 
-function setMapPoint() {
+function setMapPoint () {
   osmMap = L.map('map', {
     center: [25.04828, 121.51435],
     zoom: 16
@@ -101,7 +101,7 @@ function setMapPoint() {
     .start()
 }
 
-function searchPharmacies(data) {
+function searchPharmacies (data) {
   const searchText = searchName.value
   if (searchText === '') {
     return alert('請輸入資料')
@@ -113,7 +113,7 @@ function searchPharmacies(data) {
   )
   updateSidebar(pharmacies)
 }
-function selectPharmaciesArea(data) {
+function selectPharmaciesArea (data) {
   const pharmacies = data.filter(
     element =>
       element.properties.county === selectCity.value &&
@@ -123,12 +123,12 @@ function selectPharmaciesArea(data) {
   panToMarker(pharmacies[0])
 }
 
-function updateMarker(data) {
+function updateMarker (data) {
   let markers = new L.MarkerClusterGroup()
 
   data.forEach(pharmacy => {
     const { geometry, properties } = pharmacy
-    const iconColor = (function() {
+    const iconColor = (function () {
       if (properties.mask_adult === 0) {
         return new L.Icon({
           iconUrl:
@@ -162,19 +162,19 @@ function updateMarker(data) {
         <h5 class="card-title">${properties.name}</h5>
         <p class=" ">電話: ${properties.phone} </p>
         <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${
-          properties.address
+        properties.address
         }" target="_blank">${properties.address}</a></p>
         <p class=" ">更新時間: ${properties.updated}</p>
         <p class=" mb-1 ">注意事項: ${
-          properties.custom_note === '' ? '無' : properties.custom_note
+        properties.custom_note === '' ? '無' : properties.custom_note
         }</p>
         <div class="mask d-flex justify-content-center mt-5">
           <a href="#" class="btn btn-blue  mr-2 d-inline-block text-light">成人口罩:${
-            properties.mask_adult
-          }</a>
+        properties.mask_adult
+        }</a>
           <a href="#" class="btn btn-pink  d-inline-block text-light">兒童口罩: ${
-            properties.mask_child
-          }</a>
+        properties.mask_child
+        }</a>
         </div>
       </li>`)
     )
@@ -182,7 +182,7 @@ function updateMarker(data) {
   })
 }
 
-function updateSidebar(data) {
+function updateSidebar (data) {
   let str = ''
 
   data.forEach(pharmacy => {
@@ -192,33 +192,33 @@ function updateSidebar(data) {
       <h5 class="card-title">${properties.name}</h5>
       <p class=" mb-1">電話: ${properties.phone} </p>
       <p class=" mb-1">地址: <a  href="https://www.google.com.tw/maps/place/${
-        properties.address
+      properties.address
       }" target="_blank">${properties.address}</a></p>
       <p class=" mb-1 ">更新時間: ${properties.updated}</p>
       <p class=" mb-1 ">注意事項: ${
-        properties.custom_note === '' ? '無' : properties.custom_note
+      properties.custom_note === '' ? '無' : properties.custom_note
       }</p>
       <div class="mask d-flex justify-content-between mt-5">
         <a href="#" class="btn btn-blue w-50 mr-2 text-light">成人口罩:${
-          properties.mask_adult
-        }</a>
+      properties.mask_adult
+      }</a>
         <a href="#" class="btn btn-pink w-50 text-light">兒童口罩: ${
-          properties.mask_child
-        }</a>
+      properties.mask_child
+      }</a>
       </div>
     </li>`
   })
   listGroup.innerHTML = str
   // 增加List click事件
   document.querySelectorAll('.list-group-item').forEach((element, index) => {
-    element.addEventListener('click', function(e) {
+    element.addEventListener('click', function (e) {
       e.stopPropagation()
       panToMarker(data[index])
     })
   })
 }
 
-function panToMarker(data) {
+function panToMarker (data) {
   const { geometry, properties } = data
   const lat = geometry.coordinates[1]
   const lon = geometry.coordinates[0]
@@ -232,31 +232,31 @@ function panToMarker(data) {
         <h5 class="card-title">${properties.name}</h5>
         <p class=" ">電話: ${properties.phone} </p>
         <p class=" ">地址: <a  href="https://www.google.com.tw/maps/place/${
-          properties.address
-        }" target="_blank">${properties.address}</a></p>
+      properties.address
+      }" target="_blank">${properties.address}</a></p>
         <p class=" ">更新時間: ${properties.updated}</p>
         <p class=" mb-1 ">注意事項: ${
-          properties.custom_note === '' ? '無' : properties.custom_note
-        }</p>
+      properties.custom_note === '' ? '無' : properties.custom_note
+      }</p>
         <div class="mask d-flex justify-content-between mt-5">
           <a href="#" class="btn btn-blue w-50 mr-1 d-inline-block text-light">成人口罩:${
-            properties.mask_adult
-          }</a>
+      properties.mask_adult
+      }</a>
           <a href="#" class="btn btn-pink w-50 d-inline-block text-light">兒童口罩: ${
-            properties.mask_child
-          }</a>
+      properties.mask_child
+      }</a>
         </div>
       </li>`
     )
     .openPopup()
 }
 
-selectCity.addEventListener('change', function() {
+selectCity.addEventListener('change', function () {
   updateTown(cityName)
   selectPharmaciesArea(storeData)
 })
 
-selectTown.addEventListener('change', function() {
+selectTown.addEventListener('change', function () {
   selectPharmaciesArea(storeData)
 })
 
