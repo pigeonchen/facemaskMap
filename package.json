@@ -41,7 +41,7 @@
     "leaflet": "^1.6.0",
     "leaflet.locatecontrol": "^0.70.0",
     "leaflet.markercluster": "^1.4.1",
-    "npm": "^6.14.1",
+    "npm": "^6.14.6",
     "postcss-cli": "^7.1.0"
   }
 }
